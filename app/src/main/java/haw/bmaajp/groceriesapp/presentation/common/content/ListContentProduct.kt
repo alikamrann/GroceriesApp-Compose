@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.common.content
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -7,9 +8,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import haw.bmaajp.groceriesapp.R
@@ -19,14 +26,19 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun ListContentProduct(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.paint(painterResource(id = R.drawable.exclusive_background)),
     title: String,
     products: List<ProductItem>,
     navController: NavController,
     onClickToCart: (ProductItem) -> Unit
 ) {
     Column(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(0.dp, DIMENS_16dp, 0.dp, DIMENS_8dp)
+
+
     ) {
         Row(
             modifier = Modifier
@@ -39,7 +51,7 @@ fun ListContentProduct(
                 fontFamily = GilroyFontFamily,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = TEXT_SIZE_24sp,
-                color = Black
+                color = Color.White
             )
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically),
@@ -47,7 +59,7 @@ fun ListContentProduct(
                 fontFamily = GilroyFontFamily,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = TEXT_SIZE_12sp,
-                color = Green
+                color = colorResource(id = R.color.pink_text)
             )
         }
         LazyRow(

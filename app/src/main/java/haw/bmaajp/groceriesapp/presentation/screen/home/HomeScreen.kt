@@ -27,6 +27,7 @@ import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
+import haw.bmaajp.groceriesapp.presentation.component.SaleCompose
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
@@ -49,7 +50,7 @@ fun HomeScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
-            HeaderLocationHome()
+//            HeaderLocationHome()
 
             SearchViewBar(
                 hint = stringResource(id = R.string.search_store),
@@ -58,6 +59,9 @@ fun HomeScreen(
                     if (it.isNotEmpty()) navController.navigate(Screen.Search.route)
                 }
             )
+
+            SaleCompose()
+
 
             SliderBanner()
 
@@ -72,14 +76,7 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(DIMENS_24dp))
 
-            ListContentProduct(
-                title = stringResource(id = R.string.best_selling),
-                products = allProducts.sortedByDescending { it.id },
-                navController = navController,
-                onClickToCart = { productItem ->
-                    clickToCart(mContext, productItem, homeViewModel)
-                }
-            )
+
         }
     }
 }
@@ -130,6 +127,6 @@ fun clickToCart(context: Context, productItem: ProductItem, viewModel: HomeViewM
 
 @Preview(showBackground = true)
 @Composable
-fun HeaderLocationHomePreview() {
+fun HomeScreenPreview() {
     HeaderLocationHome()
 }

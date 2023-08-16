@@ -13,12 +13,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.google.accompanist.pager.*
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_114dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_12dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_300dp
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_32dp
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_4dp
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_8dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
@@ -26,9 +31,9 @@ import kotlin.math.absoluteValue
 @ExperimentalPagerApi
 @Composable
 fun SliderBanner(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier.padding(DIMENS_16dp, DIMENS_4dp, DIMENS_16dp, DIMENS_16dp)
 ) {
-    val pagerState = rememberPagerState(initialPage = 0)
+    val pagerState = com.google.accompanist.pager.rememberPagerState(initialPage = 0)
     val imageSlider = listOf(
         painterResource(id = R.drawable.img_banner1),
         painterResource(id = R.drawable.img_banner2),
@@ -37,7 +42,7 @@ fun SliderBanner(
 
     LaunchedEffect(Unit) {
         while (true) {
-            yield()
+            kotlinx.coroutines.yield()
             delay(2600)
             pagerState.animateScrollToPage(
                 page = (pagerState.currentPage + 1) % (pagerState.pageCount)
@@ -46,12 +51,12 @@ fun SliderBanner(
     }
 
     Column {
-        HorizontalPager(
+        com.google.accompanist.pager.HorizontalPager(
             count = imageSlider.size,
             state = pagerState,
-            contentPadding = PaddingValues(horizontal = DIMENS_16dp),
+
             modifier = modifier
-                .height(DIMENS_114dp)
+                .height(DIMENS_300dp)
                 .fillMaxWidth()
         ) { page ->
             Card(
@@ -76,21 +81,28 @@ fun SliderBanner(
                         )
                     }
             ) {
-                Image(
-                    painter = imageSlider[page],
-                    contentDescription = stringResource(R.string.image_slider),
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
+                Box {
+                    Image(
+                        painter = imageSlider[page],
+                        contentDescription = stringResource(R.string.watch_auction),
+                        contentScale = ContentScale.FillHeight,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                    HorizontalPagerIndicator(
+                        pagerState = pagerState,
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .wrapContentHeight()
+                            .align(Alignment.BottomStart)
+                            .padding(DIMENS_32dp,0.dp, DIMENS_12dp,DIMENS_12dp)
+
+
+                    )
+                }
             }
         }
 
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(DIMENS_16dp)
-        )
+
     }
 }
 
