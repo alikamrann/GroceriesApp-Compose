@@ -27,6 +27,7 @@ import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
+import haw.bmaajp.groceriesapp.presentation.common.content.ListStyleWeek
 import haw.bmaajp.groceriesapp.presentation.component.SaleCompose
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
@@ -74,8 +75,14 @@ fun HomeScreen(
                 }
             )
 
-            Spacer(modifier = Modifier.height(DIMENS_24dp))
+            Spacer(modifier = Modifier.height(DIMENS_48dp))
 
+            ListStyleWeek(title = stringResource(id = R.string.exclusive_offer),
+                products = allProducts,
+                navController = navController,
+                onClickToCart = { productItem ->
+                    clickToCart(mContext, productItem, homeViewModel)
+                })
 
         }
     }
