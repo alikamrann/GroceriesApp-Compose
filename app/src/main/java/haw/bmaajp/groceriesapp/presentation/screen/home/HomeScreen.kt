@@ -26,6 +26,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
+import haw.bmaajp.groceriesapp.presentation.common.content.Banners
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.common.content.ListMostPopularProduct
 import haw.bmaajp.groceriesapp.presentation.common.content.ListStyleWeek
@@ -93,6 +94,10 @@ fun HomeScreen(
                 onClickToCart = { productItem ->
                     clickToCart(mContext, productItem, homeViewModel)
                 })
+
+            Spacer(modifier = Modifier.height(DIMENS_16dp))
+
+            Banners()
 
         }
     }
