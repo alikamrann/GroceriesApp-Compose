@@ -2,9 +2,15 @@ package haw.bmaajp.groceriesapp.utils
 
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.AboutItem
+import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.CategoryItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
-import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory1
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory2
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory3
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory4
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory5
+import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory6
 
 object DataDummy {
 
@@ -109,6 +115,92 @@ object DataDummy {
                 price = 9.10,
                 nutritions = "100gr",
                 review = 4.5
+            ),
+        )
+    }
+
+
+    fun generateDummyBrand(): List<BrandItem> {
+        return listOf(
+            BrandItem(
+                id = 1,
+                title = "Macaroni",
+                description = "Macaroni is dry pasta shaped like narrow tubes.[2] Made with durum wheat, macaroni is commonly cut in short lengths; curved macaroni may be referred to as elbow macaroni. ",
+                image = R.drawable.product1,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 2,
+                title = "Egg",
+                description = "Eggs have a hard shell of calcium carbonate enclosing a liquid white, a single yolk (or an occasional double yolk)and an air cell.",
+                image = R.drawable.product2,
+                unit = "10pcs, Price",
+
+            ),
+            BrandItem(
+                id = 3,
+                title = "Mayonnaise",
+                description = "Mayonnaise is the creamy white condiment you use to make tuna salad or spread on your BLT sandwich. Most mayonnaise is made from egg yolks, oil, and lemon juice. Mayonnaise is common in many foods around the world, from fancy French sauces like rémoulade to Japanese okonomiyaki.",
+                image = R.drawable.product3,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 4,
+                title = "Egg Noodles",
+                description = "A type of flat pasta that differs from regular flour and water pasta in that eggs are added to enrich the dough. Several different widths are produced commercially and the noodles are available fresh or dried.",
+                image = R.drawable.product4,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 5,
+                title = "Ginger",
+                description = "Ginger is one of the most popular spices in the world and comes from the underground stem of the ginger plant. The aromatic and fiery spice has been a signature ingredient in Asian cuisine since ancient times.",
+                image = R.drawable.product5,
+                unit = "20pcs, Price",
+
+            ),
+            BrandItem(
+                id = 6,
+                title = "Diet Coke",
+                description = "Diet coke® is the perfect balance of crisp and refreshing, with no sugar and no calories. enjoy the great diet cola flavour that's fizzing delicious! CARBONATED WATER, CARAMEL COLOUR, PHOSPHORIC AND CITRIC ACID, ASPARTAME (CONTAINS PHENYLALANINE), FLAVOUR, SODIUM BENZOATE, CAFFEINE, ACESULFAME-POTASSIUM.",
+                image = R.drawable.product6,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 7,
+                title = "Broilers",
+                description = "A broiler is any chicken (Gallus gallus domesticus) that is bred and raised specifically for meat production. Most commercial broilers reach slaughter weight between four and six weeks of age, although slower growing breeds reach slaughter weight at approximately 14 weeks of age.",
+                image = R.drawable.product7,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 8,
+                title = "Juice Apple",
+                description = "It is a very clear liquid from which the pulp has been removed. This juice is often used to flavor meats, or as an ingredient in dressings and sauces, adding a sweet apple flavor.",
+                image = R.drawable.product8,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 9,
+                title = "Juice Orange",
+                description = "Orange juice is a fruit juice obtained by squeezing, pressing or otherwise crushing the interior of an orange. Orange juice is a nutrition powerhouse with naturally occurring vitamins and minerals and many antioxidants.",
+                image = R.drawable.product9,
+                unit = "1pcs, Price",
+
+            ),
+            BrandItem(
+                id = 10,
+                title = "Banana",
+                description = "A banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called \"plantains\", distinguishing them from dessert bananas.",
+                image = R.drawable.product10,
+                unit = "8pcs, Price",
+
             ),
         )
     }

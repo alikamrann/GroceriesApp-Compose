@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.usecase.UseCases
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,18 @@ class HomeViewModel @Inject constructor(
     private val _productList = MutableStateFlow<List<ProductItem>>(emptyList())
     val productList = _productList.asStateFlow()
 
+
+    private val _brandList = MutableStateFlow<List<BrandItem>>(emptyList())
+    val brandList = _brandList.asStateFlow()
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            useCases.getAllBrandtUseCase.invoke().collect { value ->
+                _brandList.value = value
+            }
+        }
+    }
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
             useCases.getAllProductUseCase.invoke().collect { value ->
@@ -30,6 +43,7 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
 
     fun addCart(productItem: ProductItem) = viewModelScope.launch {
         useCases.addCartUseCase.invoke(productItem)

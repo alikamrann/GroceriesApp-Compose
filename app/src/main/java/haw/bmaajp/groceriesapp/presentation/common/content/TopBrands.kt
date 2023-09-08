@@ -4,15 +4,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -32,23 +32,22 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
-import haw.bmaajp.groceriesapp.presentation.common.card.ProductCard
+import haw.bmaajp.groceriesapp.presentation.common.card.BrandCard
 import haw.bmaajp.groceriesapp.presentation.component.DrawableWrapper
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_114dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
-import haw.bmaajp.groceriesapp.ui.theme.DIMENS_2dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_8dp
 import haw.bmaajp.groceriesapp.ui.theme.GilroyFontFamily
 import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_10sp
 import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_24sp
 
 @Composable
-fun ListMostPopularProduct(
+fun ListTopBrands(
     modifier: Modifier = Modifier,
     title: String,
-    headerIcon:Int,
-    products: List<ProductItem>,
+    brands: List<BrandItem>,
     navController: NavController,
     onClickToCart: (ProductItem) -> Unit
 ) {
@@ -60,7 +59,9 @@ fun ListMostPopularProduct(
             .padding(0.dp, 0.dp, DIMENS_16dp, DIMENS_8dp)
 
 
-    ) {
+    )
+
+    {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -79,7 +80,7 @@ fun ListMostPopularProduct(
 
                 )
             Image(
-                painter = painterResource(id = headerIcon),
+                painter = painterResource(id = R.drawable.ic_star_border),
                 contentDescription = "ic_star_border",
                 Modifier
                     .size(DIMENS_114dp)
@@ -88,13 +89,14 @@ fun ListMostPopularProduct(
 
                 )
         }
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(DIMENS_2dp),
-            contentPadding = PaddingValues(DIMENS_8dp)
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(minSize = 128.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            items(products) { product ->
-                ProductCard(
-                    productItem = product,
+            items(brands) { brand ->
+                BrandCard(
+                    brandItem = brand,
                     navController = navController,
                     onClickToCart = onClickToCart
                 )
@@ -134,41 +136,42 @@ fun ListMostPopularProduct(
 
 @Preview(showBackground = true)
 @Composable
-fun ListMostPopularProductPreview() {
-    ListMostPopularProduct(
-        title = "Exclusive Offer",
-        headerIcon =R.drawable.ic_star_border,
-        products = listOf(
-            ProductItem(
+fun ListTopBrandsPreview() {
+    ListTopBrands(
+        title = stringResource(R.string.top_brands),
+        brands = listOf(
+            BrandItem(
                 id = 1,
                 title = "Organic Bananas",
                 description = "",
-                image = R.drawable.product10,
+                image = R.drawable.product1,
                 unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
+
             ),
-            ProductItem(
+            BrandItem(
                 id = 1,
                 title = "Organic Bananas",
                 description = "",
-                image = R.drawable.product10,
+                image = R.drawable.product2,
                 unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
+
             ),
-            ProductItem(
+            BrandItem(
                 id = 1,
                 title = "Organic Bananas",
                 description = "",
-                image = R.drawable.product10,
+                image = R.drawable.product3,
                 unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
-            )
+
+            ),
+            BrandItem(
+                id = 1,
+                title = "Organic Bananas",
+                description = "",
+                image = R.drawable.product4,
+                unit = "7pcs, Priceg",
+
+                )
         ),
         navController = rememberNavController(),
         onClickToCart = {}

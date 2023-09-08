@@ -25,6 +25,10 @@ class SplashViewModel @Inject constructor(
             useCases.insertProductsUseCase.invoke(DataDummy.generateDummyProduct())
         }
 
+        viewModelScope.launch {
+            useCases.insertBrandsUseCase.invoke(DataDummy.generateDummyBrand())
+        }
+
         viewModelScope.launch(Dispatchers.IO) {
             _onBoardingIsCompleted.value =
                 useCases.readOnBoardingUseCase().stateIn(viewModelScope).value

@@ -26,6 +26,7 @@ val DIMENS_80dp = 80.dp
 val DIMENS_90dp = 90.dp
 val DIMENS_108dp = 108.dp
 val DIMENS_114dp = 114.dp
+val DIMENS_120dp = 120.dp
 val DIMENS_174dp = 174.dp
 val DIMENS_248dp = 248.dp
 val DIMENS_300dp = 300.dp

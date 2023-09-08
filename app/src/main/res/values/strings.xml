@@ -42,4 +42,6 @@
     <string name="digistyle">Digistyle</string>
     <string name="watch_auction">Watch auction</string>
     <string name="most_popular_product">Most popular products</string>
+    <string name="new_product">New products</string>
+    <string name="top_brands">Top Brands</string>
 </resources>

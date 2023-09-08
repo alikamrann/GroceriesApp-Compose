@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.data.repository
 
+import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.repository.LocalDataSource
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
@@ -20,6 +21,9 @@ class Repository @Inject constructor(
     suspend fun insertProducts(products: List<ProductItem>) =
         localDataSource.insertProducts(products)
 
+    suspend fun insertBrands(brands: List<BrandItem>) =
+        localDataSource.insertBrands(brands)
+
     fun getAllProduct(): Flow<List<ProductItem>> = localDataSource.getAllProduct()
 
     suspend fun getSelectedProduct(productId: Int): ProductItem =
@@ -33,5 +37,8 @@ class Repository @Inject constructor(
     suspend fun deleteCart(productItem: ProductItem) = localDataSource.deleteCart(productItem)
 
     fun searchProduct(query: String): Flow<List<ProductItem>> = localDataSource.searchProduct(query)
+    fun getAllBrands(): Flow<List<BrandItem>> =
+         localDataSource.getAllBrands()
+
 
 }

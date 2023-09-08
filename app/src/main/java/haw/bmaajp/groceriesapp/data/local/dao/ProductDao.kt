@@ -1,6 +1,7 @@
 package haw.bmaajp.groceriesapp.data.local.dao
 
 import androidx.room.*
+import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import kotlinx.coroutines.flow.Flow
 
@@ -9,6 +10,9 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProducts(products: List<ProductItem>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBrands(brands: List<BrandItem>)
 
     @Query("SELECT * FROM product_table")
     fun getAllProducts(): Flow<List<ProductItem>>
@@ -27,5 +31,8 @@ interface ProductDao {
 
     @Query("SELECT * FROM product_table WHERE title LIKE '%' || :query || '%'")
     fun searchProduct(query: String): Flow<List<ProductItem>>
+
+    @Query("SELECT * FROM brand_table limit 6")
+    fun getAllBrands(): Flow<List<BrandItem>>
 
 }
