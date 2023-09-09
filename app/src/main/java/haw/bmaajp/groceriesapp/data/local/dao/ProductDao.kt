@@ -1,7 +1,12 @@
 package haw.bmaajp.groceriesapp.data.local.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import haw.bmaajp.groceriesapp.domain.model.BrandItem
+import haw.bmaajp.groceriesapp.domain.model.DesignerItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import kotlinx.coroutines.flow.Flow
 
@@ -9,10 +14,13 @@ import kotlinx.coroutines.flow.Flow
 interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProducts(products: List<ProductItem>)
+     fun insertProducts(products: List<ProductItem>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBrands(brands: List<BrandItem>)
+     fun insertBrands(brands: List<BrandItem>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+     fun insertDesigners(designer: List<DesignerItem>)
 
     @Query("SELECT * FROM product_table")
     fun getAllProducts(): Flow<List<ProductItem>>
@@ -24,15 +32,18 @@ interface ProductDao {
     fun getAllProductCart(isCart: Boolean): Flow<List<ProductItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addCart(productItem: ProductItem)
+     fun addCart(productItem: ProductItem)
 
     @Update
-    suspend fun deleteCart(productItem: ProductItem)
+     fun deleteCart(productItem: ProductItem)
 
     @Query("SELECT * FROM product_table WHERE title LIKE '%' || :query || '%'")
     fun searchProduct(query: String): Flow<List<ProductItem>>
 
     @Query("SELECT * FROM brand_table limit 6")
     fun getAllBrands(): Flow<List<BrandItem>>
+
+    @Query("SELECT * FROM designer_table limit 4")
+    fun getAllDesigner(): Flow<List<DesignerItem>>
 
 }

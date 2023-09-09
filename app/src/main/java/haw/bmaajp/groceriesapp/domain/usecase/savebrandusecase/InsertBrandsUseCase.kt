@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.domain.usecase.saveproductusecase
+package haw.bmaajp.groceriesapp.domain.usecase.savebrandusecase
 
 import haw.bmaajp.groceriesapp.data.repository.Repository
 import haw.bmaajp.groceriesapp.domain.model.BrandItem

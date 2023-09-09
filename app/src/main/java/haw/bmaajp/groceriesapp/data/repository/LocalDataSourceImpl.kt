@@ -2,6 +2,7 @@ package haw.bmaajp.groceriesapp.data.repository
 
 import haw.bmaajp.groceriesapp.data.local.ProductDatabase
 import haw.bmaajp.groceriesapp.domain.model.BrandItem
+import haw.bmaajp.groceriesapp.domain.model.DesignerItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.repository.LocalDataSource
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,10 @@ class LocalDataSourceImpl(
 
     override suspend fun insertBrands(brands: List<BrandItem>) {
         productDao.insertBrands(brands)
+    }
+
+    override suspend fun insertDesigner(designer: List<DesignerItem>) {
+        productDao.insertDesigners(designer)
     }
 
     override fun getAllProduct(): Flow<List<ProductItem>> = productDao.getAllProducts()
@@ -37,6 +42,8 @@ class LocalDataSourceImpl(
     override fun searchProduct(query: String): Flow<List<ProductItem>> =
         productDao.searchProduct(query)
 
-    override fun getAllBrands() :Flow<List<BrandItem>> = productDao.getAllBrands()
+    override fun getAllBrands(): Flow<List<BrandItem>> = productDao.getAllBrands()
+    override fun getAllDesigner(): Flow<List<DesignerItem>> = productDao.getAllDesigner()
+
 
 }

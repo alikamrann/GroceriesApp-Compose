@@ -26,7 +26,7 @@ object DatabaseModule {
             context,
             ProductDatabase::class.java,
             PRODUCT_DATABASE
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 
     @Provides

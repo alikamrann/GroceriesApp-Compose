@@ -40,7 +40,10 @@ import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.presentation.common.card.BrandCard
+import haw.bmaajp.groceriesapp.presentation.common.card.DesignerCard
+import haw.bmaajp.groceriesapp.presentation.common.card.DigiMagCard
 import haw.bmaajp.groceriesapp.presentation.common.content.Banners
+import haw.bmaajp.groceriesapp.presentation.common.content.LisPopularCategories
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.common.content.ListMostPopularProduct
 import haw.bmaajp.groceriesapp.presentation.common.content.ListStyleWeek
@@ -58,6 +61,7 @@ import haw.bmaajp.groceriesapp.ui.theme.GrayThirdTextColor
 import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_10sp
 import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_12sp
 import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_24sp
+import haw.bmaajp.groceriesapp.utils.DataDummy
 import haw.bmaajp.groceriesapp.utils.showToastShort
 
 @ExperimentalPagerApi
@@ -66,12 +70,15 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     homeViewModel: HomeViewModel = hiltViewModel()
+
 ) {
     val mContext = LocalContext.current
     val searchQuery by homeViewModel.searchQuery
     val allProducts by homeViewModel.productList.collectAsState()
     val allBrands by homeViewModel.brandList.collectAsState()
-    val title = stringResource(id = R.string.top_brands)
+    val allDesigners by homeViewModel.designerList.collectAsState()
+
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
 
@@ -153,7 +160,7 @@ fun HomeScreen(
 
                 ) {
                 Text(
-                    text = title,
+                    text = stringResource(id = R.string.top_brands),
                     Modifier
                         .align(Alignment.Center)
                         .padding(0.dp, 8.dp, 0.dp, 0.dp),
@@ -203,7 +210,8 @@ fun HomeScreen(
         item {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth().padding(top = 16.dp),
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Divider(
@@ -240,6 +248,208 @@ fun HomeScreen(
                     clickToCart(mContext, productItem, homeViewModel)
                 })
         }
+
+        item { Spacer(modifier = Modifier.height(DIMENS_16dp)) }
+
+
+        item {
+
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = DIMENS_16dp, end = DIMENS_16dp),
+
+                ) {
+                Text(
+                    text = stringResource(id = R.string.world_designers),
+                    Modifier
+                        .align(Alignment.Center)
+                        .padding(0.dp, 8.dp, 0.dp, 0.dp),
+                    fontFamily = GilroyFontFamily,
+                    fontWeight = FontWeight.Light,
+                    fontSize = TEXT_SIZE_24sp,
+                    color = Color.Gray,
+
+                    )
+                Image(
+                    painter = painterResource(id = R.drawable.ic_word),
+                    contentDescription = "ic_word",
+                    Modifier
+                        .size(DIMENS_114dp)
+                        .align(Alignment.Center)
+                        .alpha(0.2f),
+
+                    )
+            }
+        }
+        items(allDesigners.windowed(2, 2, true)) { sublist ->
+            Row(Modifier.fillMaxWidth()) {
+                sublist.forEach { item ->
+                    val paddingEnd: Dp
+                    val paddingStart: Dp
+                    if (sublist.indexOf(item) % 2 == 0) {
+                        paddingEnd = 8.dp;
+                        paddingStart = 16.dp;
+                    }
+                    else{
+                        paddingEnd = 16.dp;
+                        paddingStart = 8.dp;
+                    }
+
+                    DesignerCard(
+                        modifier = Modifier
+                            .fillParentMaxWidth(.5f)
+                            .padding(start = paddingStart, end = paddingEnd, top = 16.dp),
+                        designerItem = item,
+                        navController = navController,
+                        onClickToCart = {}
+                    )
+                }
+            }
+        }
+
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Divider(
+                    Modifier
+                        .height(1.dp)
+                        .weight(1f)
+                        .align(Alignment.CenterVertically)
+                )
+                DrawableWrapper(
+                    drawableTop = null,
+                    drawableStart = null,
+                    drawableBottom = null,
+                    drawableEnd = R.drawable.ic_keyboard_arrow_right,
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.see_all), Modifier
+                            .align(Alignment.CenterVertically)
+                            .padding(4.dp, 0.dp, 4.dp, 0.dp),
+                        fontFamily = GilroyFontFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = TEXT_SIZE_10sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+        }
+
+
+        item { Spacer(modifier = Modifier.height(DIMENS_16dp)) }
+
+
+        item {
+            LisPopularCategories(
+                title = stringResource(id = R.string.most_popular_categories),
+                categories = DataDummy.generateDummyCategories()+DataDummy.generateDummyCategories(),
+                navController = navController,
+                headerIcon = R.drawable.ic_category,
+                onClickToCart = { productItem ->
+                    clickToCart(mContext, productItem, homeViewModel)
+                })
+        }
+
+
+
+
+
+
+
+        item { Spacer(modifier = Modifier.height(DIMENS_16dp)) }
+
+
+        item {
+
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = DIMENS_16dp, end = DIMENS_16dp),
+
+                ) {
+                Text(
+                    text = stringResource(id = R.string.weblog),
+                    Modifier
+                        .align(Alignment.Center)
+                        .padding(0.dp, 8.dp, 0.dp, 0.dp),
+                    fontFamily = GilroyFontFamily,
+                    fontWeight = FontWeight.Light,
+                    fontSize = TEXT_SIZE_24sp,
+                    color = Color.Gray,
+
+                    )
+
+            }
+        }
+        items(allDesigners.windowed(2, 2, true)) { sublist ->
+            Row(Modifier.fillMaxWidth()) {
+                sublist.forEach { item ->
+                    val paddingEnd: Dp
+                    val paddingStart: Dp
+                    if (sublist.indexOf(item) % 2 == 0) {
+                        paddingEnd = 4.dp;
+                        paddingStart = 8.dp;
+                    }
+                    else{
+                        paddingEnd = 8.dp;
+                        paddingStart = 4.dp;
+                    }
+
+                    DigiMagCard(
+                        modifier = Modifier
+                            .fillParentMaxWidth(.5f)
+                            .padding(start = paddingStart, end = paddingEnd, top = 16.dp),
+                        designerItem = item,
+                        navController = navController,
+                        onClickToCart = {}
+                    )
+                }
+            }
+        }
+
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Divider(
+                    Modifier
+                        .height(1.dp)
+                        .weight(1f)
+                        .align(Alignment.CenterVertically)
+                )
+                DrawableWrapper(
+                    drawableTop = null,
+                    drawableStart = null,
+                    drawableBottom = null,
+                    drawableEnd = R.drawable.ic_keyboard_arrow_right,
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.see_all), Modifier
+                            .align(Alignment.CenterVertically)
+                            .padding(4.dp, 0.dp, 4.dp, 0.dp),
+                        fontFamily = GilroyFontFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = TEXT_SIZE_10sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+        }
+
+
+        item { Spacer(modifier = Modifier.height(DIMENS_16dp)) }
+
+
 
 
     }
@@ -286,6 +496,9 @@ fun HeaderLocationHome(
             )
         }
     }
+
+
+
 }
 
 fun clickToCart(context: Context, productItem: ProductItem, viewModel: HomeViewModel) {
