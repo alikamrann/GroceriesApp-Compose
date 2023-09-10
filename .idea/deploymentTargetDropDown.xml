@@ -2,16 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ComposedLayoutPreview">
+      <entry key="CartScreenPreview">
         <State />
       </entry>
-      <entry key="LMyScreenPreview">
+      <entry key="EmptyContentPreview">
         <State />
       </entry>
-      <entry key="LisPopularCategoriesPreview">
+      <entry key="EmptyFavoriteContentPreview">
         <State />
       </entry>
       <entry key="MinCategoryCardPreview">
+        <State />
+      </entry>
+      <entry key="PreviewTab">
         <State />
       </entry>
       <entry key="app">

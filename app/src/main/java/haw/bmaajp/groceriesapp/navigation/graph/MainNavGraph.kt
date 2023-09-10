@@ -1,9 +1,13 @@
 package haw.bmaajp.groceriesapp.navigation.graph
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.*
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import androidx.navigation.navigation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.navigation.screen.BottomNavItemScreen
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
@@ -11,6 +15,7 @@ import haw.bmaajp.groceriesapp.presentation.screen.about.AboutScreen
 import haw.bmaajp.groceriesapp.presentation.screen.cart.CartScreen
 import haw.bmaajp.groceriesapp.presentation.screen.detail.DetailScreen
 import haw.bmaajp.groceriesapp.presentation.screen.explore.ExploreScreen
+import haw.bmaajp.groceriesapp.presentation.screen.favorite.FavoriteScreen
 import haw.bmaajp.groceriesapp.presentation.screen.home.HomeScreen
 import haw.bmaajp.groceriesapp.presentation.screen.search.SearchScreen
 import haw.bmaajp.groceriesapp.utils.Constants.PRODUCT_ARGUMENT_KEY
@@ -32,6 +37,10 @@ fun MainNavGraph(navController: NavHostController) {
         composable(route = BottomNavItemScreen.Cart.route) {
             CartScreen()
         }
+        composable(route = BottomNavItemScreen.Favorite.route) {
+            FavoriteScreen()
+        }
+
         composable(route = BottomNavItemScreen.About.route) {
             AboutScreen()
         }

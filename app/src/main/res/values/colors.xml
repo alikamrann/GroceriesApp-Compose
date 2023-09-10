@@ -10,4 +10,5 @@
     <color name="light_gray">#f7f7f7</color>
     <color name="pink_text">#FFC0CB</color>
     <color name="glass_gray">#B3EBECF0</color>
+    <color name="main_color">#080A3B</color>
 </resources>

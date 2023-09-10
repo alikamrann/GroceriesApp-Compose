@@ -12,9 +12,11 @@ import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
 import haw.bmaajp.groceriesapp.domain.usecase.UseCases
 import haw.bmaajp.groceriesapp.domain.usecase.addcartusecase.AddCartUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.deletecartusecase.DeleteCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.deletefavoriteusecase.DeleteFavoriteUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallDesigners.GetAllDesigners
 import haw.bmaajp.groceriesapp.domain.usecase.getallbrand.GetAllBrandUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallcartusecase.GetAllCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.getallfavoriteusecase.GetAllFavoriteUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallproduct.GetAllProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
@@ -49,8 +51,10 @@ object RepositoryModule {
             getAllBrandtUseCase =  GetAllBrandUseCase(repository),
             getAllDesignersUseCase = GetAllDesigners(repository),
             getAllCartUseCase = GetAllCartUseCase(repository),
+            getAllFavoriteUseCase = GetAllFavoriteUseCase(repository),
             addCartUseCase = AddCartUseCase(repository),
             deleteCart = DeleteCartUseCase(repository),
+            deleteFavorite = DeleteFavoriteUseCase(repository),
             searchProductUseCase = SearchProductUseCase(repository),
 
 

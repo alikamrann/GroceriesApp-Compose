@@ -39,6 +39,11 @@ class LocalDataSourceImpl(
         productDao.deleteCart(productItem)
     }
 
+    override suspend fun deleteFavorite(productItem: ProductItem) {
+        productItem.isFavorite = false
+        productDao.deleteFavorite(productItem)
+    }
+
     override fun searchProduct(query: String): Flow<List<ProductItem>> =
         productDao.searchProduct(query)
 

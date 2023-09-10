@@ -43,7 +43,7 @@ fun ListContentCart(
             }
         }
     } else {
-        EmptyContent()
+        EmptyCartContent()
     }
 }
 

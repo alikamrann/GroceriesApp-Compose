@@ -17,6 +17,7 @@ interface LocalDataSource {
     fun getAllProductCart(isCart: Boolean): Flow<List<ProductItem>>
     suspend fun addCart(productItem: ProductItem)
     suspend fun deleteCart(productItem: ProductItem)
+    suspend fun deleteFavorite(productItem: ProductItem)
     fun searchProduct(query: String): Flow<List<ProductItem>>
     fun getAllBrands(): Flow<List<BrandItem>>
 

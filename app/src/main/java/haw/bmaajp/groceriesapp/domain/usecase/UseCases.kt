@@ -2,9 +2,11 @@ package haw.bmaajp.groceriesapp.domain.usecase
 
 import haw.bmaajp.groceriesapp.domain.usecase.addcartusecase.AddCartUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.deletecartusecase.DeleteCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.deletefavoriteusecase.DeleteFavoriteUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallDesigners.GetAllDesigners
 import haw.bmaajp.groceriesapp.domain.usecase.getallbrand.GetAllBrandUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallcartusecase.GetAllCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.getallfavoriteusecase.GetAllFavoriteUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallproduct.GetAllProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
@@ -25,7 +27,9 @@ data class UseCases(
     val getAllBrandtUseCase: GetAllBrandUseCase,
     val getAllDesignersUseCase: GetAllDesigners,
     val getAllCartUseCase: GetAllCartUseCase,
+    val getAllFavoriteUseCase: GetAllFavoriteUseCase,
     val addCartUseCase: AddCartUseCase,
     val deleteCart: DeleteCartUseCase,
+    val deleteFavorite: DeleteFavoriteUseCase,
     val searchProductUseCase: SearchProductUseCase
 )

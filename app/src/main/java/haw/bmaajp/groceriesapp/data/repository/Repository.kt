@@ -39,6 +39,8 @@ class Repository @Inject constructor(
     suspend fun addCart(productItem: ProductItem) = localDataSource.addCart(productItem)
 
     suspend fun deleteCart(productItem: ProductItem) = localDataSource.deleteCart(productItem)
+    suspend fun deleteFavorite(productItem: ProductItem) =
+        localDataSource.deleteFavorite(productItem)
 
     fun searchProduct(query: String): Flow<List<ProductItem>> = localDataSource.searchProduct(query)
     fun getAllBrands(): Flow<List<BrandItem>> =
@@ -48,5 +50,7 @@ class Repository @Inject constructor(
     fun getAllDesigners(): Flow<List<DesignerItem>> =
         localDataSource.getAllDesigner()
 
+    fun getAllProductFavorite(isFavorite: Boolean): Flow<List<ProductItem>> =
+        localDataSource.getAllProductCart(isFavorite)
 
 }

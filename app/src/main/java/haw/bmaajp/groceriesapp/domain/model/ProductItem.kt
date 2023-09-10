@@ -15,5 +15,6 @@ data class ProductItem(
     val price: Double,
     val nutritions: String,
     val review: Double,
-    var isCart: Boolean = false
+    var isCart: Boolean = false,
+    var isFavorite: Boolean = false,
 )

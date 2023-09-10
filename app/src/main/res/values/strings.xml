@@ -38,7 +38,8 @@
     <string name="image_delete">Image Delete</string>
     <string name="my_cart">My Cart</string>
     <string name="image_content_empty">Image Content Empty</string>
-    <string name="oops_no_data">Ooops! No Data</string>
+    <string name="oops_no_data">Your shopping cart is empty!</string>
+    <string name="oops_no_data_detail">Have you visited the following pages? Good offers are waiting for you</string>
     <string name="digistyle">Digistyle</string>
     <string name="watch_auction">Watch auction</string>
     <string name="most_popular_product">Most popular products</string>
@@ -48,4 +49,7 @@
     <string name="weblog">Digi style in digiMag</string>
     <string name="most_popular_categories">most Popular Categories</string>
     <string name="mens">Mens</string>
+    <string name="favorites">Favorites</string>
+    <string name="log_in_to_see_your_favorite_styles">Log in to see your favorite styles</string>
+    <string name="log_in">Log in</string>
 </resources>

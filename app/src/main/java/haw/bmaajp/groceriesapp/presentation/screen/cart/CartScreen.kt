@@ -34,8 +34,8 @@ fun CartScreen(
     ) {
         Text(
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = DIMENS_16dp),
+                .padding(top = DIMENS_16dp, start = DIMENS_16dp)
+                .align(Alignment.Start),
             text = stringResource(R.string.my_cart),
             fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.Bold,
@@ -53,8 +53,9 @@ fun CartScreen(
         )
     }
 }
+
 @Preview
 @Composable
-fun CartScreenPreview(){
+fun CartScreenPreview() {
     CartScreen()
 }

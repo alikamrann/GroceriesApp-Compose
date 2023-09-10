@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.screen.search
+package haw.bmaajp.groceriesapp.presentation.screen.favorite.favoritelistscreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -11,19 +11,21 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.presentation.common.content.EmptyCartContent
+import haw.bmaajp.groceriesapp.presentation.common.content.EmptyFavoriteContent
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
+import haw.bmaajp.groceriesapp.presentation.screen.search.SearchViewModel
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SearchScreen(
-    modifier: Modifier = Modifier,
-    searchViewModel: SearchViewModel = hiltViewModel()
+fun FavoriteListScreen(modifier: Modifier = Modifier,
+                       searchViewModel: SearchViewModel = hiltViewModel()
 ) {
     val searchQuery by searchViewModel.searchQuery
     val productsList by searchViewModel.searchProductList.collectAsState()
@@ -54,8 +56,14 @@ fun SearchScreen(
                 navController = rememberNavController(),
                 onClickToCart = {}
             )
-            else EmptyCartContent()
+            else EmptyFavoriteContent()
         }
     }
 
+}
+
+@Preview
+@Composable
+fun FavoriteListScreenPreview(){
+    FavoriteListScreen()
 }
