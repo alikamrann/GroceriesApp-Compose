@@ -1,10 +1,12 @@
 package haw.bmaajp.groceriesapp.utils
 
+import androidx.compose.ui.graphics.Color
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.AboutItem
 import haw.bmaajp.groceriesapp.domain.model.BrandItem
 import haw.bmaajp.groceriesapp.domain.model.CategoryItem
 import haw.bmaajp.groceriesapp.domain.model.DesignerItem
+import haw.bmaajp.groceriesapp.domain.model.ParentCategoryItem
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory1
 import haw.bmaajp.groceriesapp.ui.theme.BackgroundCategory2
@@ -364,6 +366,96 @@ object DataDummy {
                 image = R.drawable.ic_notification,
                 title = "Notification"
             ),
+        )
+    }
+    fun generateDummyParentCategories(): List<ParentCategoryItem>{
+        return listOf(
+            ParentCategoryItem(
+                categoryItem = CategoryItem(
+                    id = 1,
+                    title = "Organic Bananas",
+                    image = R.drawable.category_test,
+                    background = Color.White
+                ),
+                categories = listOf(
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                )
+            )
+            ,
+            ParentCategoryItem(
+                categoryItem = CategoryItem(
+                    id = 1,
+                    title = "Organic Bananas",
+                    image = R.drawable.category_test,
+                    background = Color.White
+                ),
+                categories = listOf(
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                )
+            ),
+            ParentCategoryItem(
+                categoryItem = CategoryItem(
+                    id = 1,
+                    title = "Organic Bananas",
+                    image = R.drawable.category_test,
+                    background = Color.White
+                ),
+                categories = listOf(
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                    CategoryItem(
+                        id = 1, title = "Pants", image = R.drawable.pans, background = Color.White
+                    ),
+                )
+            )
+
         )
     }
 

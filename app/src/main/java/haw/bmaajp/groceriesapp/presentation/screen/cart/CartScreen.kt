@@ -1,6 +1,10 @@
 package haw.bmaajp.groceriesapp.presentation.screen.cart
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -9,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentCart
@@ -47,4 +52,9 @@ fun CartScreen(
             }
         )
     }
+}
+@Preview
+@Composable
+fun CartScreenPreview(){
+    CartScreen()
 }
